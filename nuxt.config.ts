@@ -6,4 +6,17 @@ export default defineNuxtConfig({
     css: "/<rootDir>/assets/css",
   },
   css: ["@/assets/css/main.css"],
+  components: [{ path: "~/shared/icons", prefix: "Icon" }, "~/components"],
+  modules: [
+    [
+      "@nuxtjs/google-fonts",
+      {
+        families: {
+          Nunito: true,
+          download: true,
+          inject: true,
+        },
+      },
+    ],
+  ],
 });
