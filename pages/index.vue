@@ -53,5 +53,10 @@ button.add-new {
   border: none;
   cursor: pointer;
   padding: 0 16px;
+  transition: all 0.1s ease-out;
+}
+
+button.add-new:hover {
+  transform: scale(1.1);
 }
 </style>

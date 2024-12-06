@@ -21,7 +21,11 @@ h1 {
 .title-wrapper {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+}
+
+.title-wrapper:has(> *:nth-child(2)) {
+  justify-content: space-between;
 }
 </style>

@@ -8,7 +8,10 @@
       Ocorreu um erro ao carregar os detalhes.
     </div>
     <div v-else class="user-details-card">
-      <h2>{{ user.name }}</h2>
+      <div class="user-title">
+        <h2 class="user-complete-name">{{ user.name }}</h2>
+        <button @click="editUser" class="edit-btn"><IconEdit /></button>
+      </div>
       <p><strong>CPF:</strong> {{ user.cpf }}</p>
       <p><strong>Username:</strong> {{ user.username }}</p>
       <p><strong>Email:</strong> {{ user.email }}</p>
@@ -49,6 +52,10 @@ const goBack = () => {
   router.push("/");
 };
 
+const editUser = () => {
+  router.push(`/edit/${userId}`);
+};
+
 onMounted(() => {
   loadUserDetails();
 });
@@ -63,6 +70,25 @@ onMounted(() => {
   max-width: 400px;
   margin: auto;
   text-align: left;
+}
+
+.user-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user-complete-name {
+  margin: 0 0 16px;
+}
+
+.edit-btn {
+  border: none;
+  cursor: pointer;
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  box-shadow: 3px 3px 5px 1px rgba(0,0,0,0.33);
 }
 
 .user-details-card h2 {

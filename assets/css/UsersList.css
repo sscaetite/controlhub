@@ -3,7 +3,7 @@
   border-collapse: collapse;
   background-color: #fff;
   border-radius: 8px;
-  box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.19);
+  box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.19);
   padding: 0 30px;
 }
 
@@ -26,6 +26,12 @@
 .users-table th:last-child {
   padding-right: 30px;
   text-align: right;
+}
+
+.users-table td:last-child {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 8px;
 }
 
 .users-table button {
