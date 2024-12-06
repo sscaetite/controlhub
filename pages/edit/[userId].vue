@@ -19,10 +19,9 @@
         <input
           type="text"
           id="cpf"
-          v-model="user.cpf"
+          v-model="maskedCPF"
           required
           placeholder="Digite o CPF"
-          @input="maskCPF"
         />
         <span v-if="cpfError" class="error-message">CPF inválido.</span>
       </div>
@@ -74,6 +73,7 @@
 </template>
 
 <script setup>
+import { maskCPF } from "~/shared/utils";
 
 const router = useRouter();
 const route = useRoute();
@@ -86,6 +86,13 @@ const user = ref({
   username: "",
   email: "",
   group: "",
+});
+
+const maskedCPF = computed({
+  get: () => maskCPF(user.value.cpf),
+  set: (value) => {
+    user.value.cpf = value.replace(/\D/g, "");
+  },
 });
 
 const emailError = computed(() => {
@@ -109,16 +116,6 @@ const isFormValid = computed(() => {
     user.value.group
   );
 });
-
-const maskCPF = (event) => {
-  let value = event.target.value.replace(/\D/g, "");
-  if (value.length > 11) value = value.slice(0, 11);
-  event.target.value = value.replace(
-    /^(\d{3})(\d{3})(\d{3})(\d{2})$/,
-    "$1.$2.$3-$4"
-  );
-  user.value.cpf = event.target.value;
-};
 
 const loadUserData = async () => {
   try {
